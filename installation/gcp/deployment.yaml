@@ -1,0 +1,137 @@
+resources:
+- type: compute.v1.instance
+  name: hydragen-k8s-master
+  properties:
+    zone: europe-north1-a
+    machineType: zones/europe-north1-a/machineTypes/e2-standard-8
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
+    networkInterfaces:
+    - network: global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+- type: compute.v1.instance
+  name: hydragen-k8s-worker-1
+  properties:
+    zone: europe-north1-a
+    machineType: zones/europe-north1-a/machineTypes/e2-standard-8
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
+    networkInterfaces:
+    - network: global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+- type: compute.v1.instance
+  name: hydragen-k8s-worker-2
+  properties:
+    zone: europe-north1-a
+    machineType: zones/europe-north1-a/machineTypes/e2-standard-8
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
+    networkInterfaces:
+    - network: global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+- type: compute.v1.instance
+  name: hydragen-k8s-worker-3
+  properties:
+    zone: europe-north1-a
+    machineType: zones/europe-north1-a/machineTypes/e2-standard-8
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
+    networkInterfaces:
+    - network: global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+- type: compute.v1.instance
+  name: hydragen-k8s-worker-4
+  properties:
+    zone: europe-north1-a
+    machineType: zones/europe-north1-a/machineTypes/e2-standard-8
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
+    networkInterfaces:
+    - network: global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+- type: compute.v1.instance
+  name: hydragen-k8s-worker-5
+  properties:
+    zone: europe-north1-a
+    machineType: zones/europe-north1-a/machineTypes/e2-standard-8
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
+    networkInterfaces:
+    - network: global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+- type: compute.v1.instance
+  name: hydragen-k8s-worker-6
+  properties:
+    zone: europe-north1-a
+    machineType: zones/europe-north1-a/machineTypes/e2-standard-8
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
+    networkInterfaces:
+    - network: global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+- type: compute.v1.instance
+  name: hydragen-k8s-worker-7
+  properties:
+    zone: europe-north1-a
+    machineType: zones/europe-north1-a/machineTypes/e2-standard-8
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
+    networkInterfaces:
+    - network: global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
