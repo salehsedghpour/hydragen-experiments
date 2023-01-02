@@ -50,3 +50,19 @@ If you don't have anything installed on your local machine, you can simply ignor
     $ sh ./gcp-installation.sh
 
 > Note: This procedure will create 8 VM instances on GCP and setup a Kubernetes cluster and Istio. **This may take up to 15 minutes**, take your time and enjoy your coffee!
+
+9. (Optional) To make sure everything is installed and working properly:
+
+   - Run `kubectl get nodes` command and the output should be like this:
+   ```
+   $ kubectl get nodes
+    NAME                    STATUS   ROLES                  AGE     VERSION
+    hydragen-k8s-master     Ready    control-plane,master   11m     v1.23.7
+    hydragen-k8s-worker-1   Ready    <none>                 10m     v1.23.7
+    hydragen-k8s-worker-2   Ready    <none>                 9m23s   v1.23.7
+    hydragen-k8s-worker-3   Ready    <none>                 8m13s   v1.23.7
+    hydragen-k8s-worker-4   Ready    <none>                 7m3s    v1.23.7
+    hydragen-k8s-worker-5   Ready    <none>                 5m51s   v1.23.7
+    hydragen-k8s-worker-6   Ready    <none>                 4m41s   v1.23.7
+    hydragen-k8s-worker-7   Ready    <none>                 3m29s   v1.23.7
+   ```
