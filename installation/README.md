@@ -2,6 +2,22 @@
 > Note: The current scripts are mainly developed to work on Linux and MacOS. 
 
 Here we provided the scripts for installation on both [Google Cloud Platform](#installing-on-google-cloud) or baremetal servers.
+In general, all the experiments provided here will be running on a remote Kubernetes cluster while they are executed on a local machine. The high-level presentation for this method is shown below:
+
+
+```mermaid
+flowchart LR;
+    A("Local Machine <br/> (Kubectl installed)") -- API --> B(Kubernetes Master);
+    subgraph ide1 [Kubernetes Cluster]
+    B(Kubernetes Master) --> C(Worker Node 1)
+    B(Kubernetes Master) --> D(Worker Node 2)
+    B(Kubernetes Master) --> E(Worker Node 3)
+    B(Kubernetes Master) --> F(Worker Node 4)
+    B(Kubernetes Master) --> G(Worker Node 5)
+    B(Kubernetes Master) --> H(Worker Node 6)
+    B(Kubernetes Master) --> I(Worker Node 7)
+    end
+```
 
 ## Installing on Google Cloud
 1. First of all, you may need to create an account for Google Cloud Platform (GCP), see [here](https://cloud.google.com/free). During this step you may be asked to [create a new project](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
@@ -22,9 +38,15 @@ Here we provided the scripts for installation on both [Google Cloud Platform](#i
     Your current project is [your-recent-project-ID].  You can change this setting by running:
         $ gcloud config set project PROJECT_ID
     ```
-7. Open the terminal and run the following commands:
-    ```
+7. To be able to manage the installed cluster on your local machine, you may need to install `kubectl` on it. Follow the instructions provided [here](https://kubernetes.io/docs/tasks/tools/#kubectl) for installation of `kubectl`.
+8. The actual setup is in this step, but you may need to consider some notes:
+> **Important Note**: If you already are using a kubernetes cluster on your local machine, you may need to create a backup for that, as this step will replace `~/.kube/config` file. For creating a backup just run the following:
+
+    $ mv ~/.kube/config ~/.kube/config-bak
+
+If you don't have anything installed on your local machine, you can simply ignore the previous note and run the followings:
+
     $ cd installation
     $ sh ./gcp-installation.sh
-    ```
+
 > Note: This procedure will create 8 VM instances on GCP and setup a Kubernetes cluster and Istio. **This may take up to 15 minutes**, take your time and enjoy your coffee!
