@@ -68,5 +68,9 @@ gcloud compute ssh --zone "europe-north1-a" "hydragen-k8s-worker-7" --command "s
 gcloud compute ssh --zone "europe-north1-a" "hydragen-k8s-worker-7" --command "sudo bash ~/scripts/k8s.sh"
 gcloud compute ssh --zone "europe-north1-a" "hydragen-k8s-worker-7" --command "sudo $var > /dev/null 2>&1"
 
-echo "Installing Istio ..."
+echo "\nInstalling Istio ..."
 gcloud compute ssh --zone "europe-north1-a" "hydragen-k8s-master"   --command "bash ~/scripts/mesh.sh"
+
+echo "\nInstalling Prometheus ..."
+kubectl apply -f addons/namespaces/monitoring.yaml
+kubectl apply -f addons/prometheus/
