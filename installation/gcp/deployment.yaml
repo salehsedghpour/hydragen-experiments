@@ -3,7 +3,7 @@ resources:
   type: compute.v1.networks
   properties:
     autoCreateSubnetworks: false
-- name: europe-north-region
+- name: hydragen-europe-north-subnetwork
   type: compute.v1.subnetworks
   properties:
     ipCidrRange: 172.16.0.0/28
@@ -44,6 +44,17 @@ resources:
         direction: INGRESS
         priority: 0
         sourceRanges: ["0.0.0.0/0"]
+- name: hydragen-firewall-rules-for-cilium
+  type: compute.v1.firewall
+  properties:
+      network: $(ref.hydragen-internal-network.selfLink)
+      allowed:
+      - IPProtocol: udp
+        ports: 
+        - "8472"
+        direction: INGRESS
+        priority: 0
+        sourceRanges: ["172.16.0.0/28"]
 - type: compute.v1.instance
   name: hydragen-k8s-master
   properties:
