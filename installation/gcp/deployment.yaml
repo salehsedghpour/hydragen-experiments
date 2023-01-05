@@ -11,7 +11,7 @@ resources:
     enableFlowLogs: false
     network: $(ref.hydragen-internal-network.selfLink)
     region: europe-north1
-- name: firewall-rules-for-k8s-api-and-ssh
+- name: hydragen-firewall-rules-for-k8s-api
   type: compute.v1.firewall
   properties:
       network: $(ref.hydragen-internal-network.selfLink)
@@ -19,7 +19,28 @@ resources:
       - IPProtocol: tcp
         ports: 
         - "6443"
+        direction: INGRESS
+        priority: 0
+        sourceRanges: ["0.0.0.0/0"]
+- name: hydragen-firewall-rules-for-ssh
+  type: compute.v1.firewall
+  properties:
+      network: $(ref.hydragen-internal-network.selfLink)
+      allowed:
+      - IPProtocol: tcp
+        ports: 
         - "22"
+        direction: INGRESS
+        priority: 0
+        sourceRanges: ["0.0.0.0/0"]
+- name: hydragen-firewall-rules-for-prometheus
+  type: compute.v1.firewall
+  properties:
+      network: $(ref.hydragen-internal-network.selfLink)
+      allowed:
+      - IPProtocol: tcp
+        ports: 
+        - "30090"
         direction: INGRESS
         priority: 0
         sourceRanges: ["0.0.0.0/0"]
