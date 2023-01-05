@@ -33,6 +33,17 @@ resources:
         direction: INGRESS
         priority: 0
         sourceRanges: ["0.0.0.0/0"]
+- name: hydragen-firewall-rules-for-prometheus
+  type: compute.v1.firewall
+  properties:
+      network: $(ref.hydragen-internal-network.selfLink)
+      allowed:
+      - IPProtocol: tcp
+        ports: 
+        - "30090"
+        direction: INGRESS
+        priority: 0
+        sourceRanges: ["0.0.0.0/0"]
 - type: compute.v1.instance
   name: hydragen-k8s-master
   properties:
