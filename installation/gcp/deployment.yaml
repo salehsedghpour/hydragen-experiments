@@ -69,7 +69,7 @@ resources:
         sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
     networkInterfaces:
     - network: $(ref.hydragen-internal-network.selfLink)
-      subnetwork: $(ref.europe-north-region.selfLink)
+      subnetwork: $(ref.hydragen-europe-north-subnetwork.selfLink)
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -87,7 +87,7 @@ resources:
         sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
     networkInterfaces:
     - network: $(ref.hydragen-internal-network.selfLink)
-      subnetwork: $(ref.europe-north-region.selfLink)
+      subnetwork: $(ref.hydragen-europe-north-subnetwork.selfLink)
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -105,7 +105,7 @@ resources:
         sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
     networkInterfaces:
     - network: $(ref.hydragen-internal-network.selfLink)
-      subnetwork: $(ref.europe-north-region.selfLink)
+      subnetwork: $(ref.hydragen-europe-north-subnetwork.selfLink)
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -123,7 +123,7 @@ resources:
         sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
     networkInterfaces:
     - network: $(ref.hydragen-internal-network.selfLink)
-      subnetwork: $(ref.europe-north-region.selfLink)
+      subnetwork: $(ref.hydragen-europe-north-subnetwork.selfLink)
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -141,7 +141,7 @@ resources:
         sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
     networkInterfaces:
     - network: $(ref.hydragen-internal-network.selfLink)
-      subnetwork: $(ref.europe-north-region.selfLink)
+      subnetwork: $(ref.hydragen-europe-north-subnetwork.selfLink)
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -159,7 +159,7 @@ resources:
         sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
     networkInterfaces:
     - network: $(ref.hydragen-internal-network.selfLink)
-      subnetwork: $(ref.europe-north-region.selfLink)
+      subnetwork: $(ref.hydragen-europe-north-subnetwork.selfLink)
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -177,7 +177,7 @@ resources:
         sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
     networkInterfaces:
     - network: $(ref.hydragen-internal-network.selfLink)
-      subnetwork: $(ref.europe-north-region.selfLink)
+      subnetwork: $(ref.hydragen-europe-north-subnetwork.selfLink)
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -195,7 +195,7 @@ resources:
         sourceImage: projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts
     networkInterfaces:
     - network: $(ref.hydragen-internal-network.selfLink)
-      subnetwork: $(ref.europe-north-region.selfLink)
+      subnetwork: $(ref.hydragen-europe-north-subnetwork.selfLink)
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
