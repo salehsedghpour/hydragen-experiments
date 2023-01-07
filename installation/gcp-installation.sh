@@ -1,12 +1,12 @@
 #!/bin/sh
 echo "Creating 8 VM instances on GCP"
-echo "It may take a while ..."
+echo "It may take a while ...\n"
 
 gcloud deployment-manager deployments create hydragen-experiments --config ./gcp/deployment.yaml
 sleep 30
 
 # Copying the installation scripts to the nodes
-echo "Copying all required scripts to the nodes ..."
+echo "\nCopying all required scripts to the nodes ..."
 gcloud compute scp --recurse --zone "europe-north1-a" ./scripts hydragen-k8s-master:~ > /dev/null 2>&1
 gcloud compute scp --recurse --zone "europe-north1-a" ./scripts hydragen-k8s-worker-1:~ > /dev/null 2>&1
 gcloud compute scp --recurse --zone "europe-north1-a" ./scripts hydragen-k8s-worker-2:~ > /dev/null 2>&1
@@ -72,5 +72,5 @@ echo "\nInstalling Istio ..."
 gcloud compute ssh --zone "europe-north1-a" "hydragen-k8s-master"   --command "bash ~/scripts/mesh.sh"
 
 echo "\nInstalling Prometheus ..."
-kubectl apply -f addons/namespaces/monitoring.yaml
-kubectl apply -f addons/prometheus/
+kubectl apply -f addons/namespaces/monitoring.yaml > /dev/null 2>&1
+kubectl apply -f addons/prometheus/ > /dev/null 2>&1
