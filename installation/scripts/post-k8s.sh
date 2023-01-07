@@ -3,6 +3,9 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf  $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
+# Label master node
+kubectl label nodes $(hostname -s) node-role=master > /dev/null 2>&1
+
 # Install Cilium 
 CILIUM_CLI_VERSION=v0.12.11
 CLI_ARCH=amd64
