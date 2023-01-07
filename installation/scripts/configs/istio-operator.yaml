@@ -1,0 +1,23 @@
+# This will configure both ingressgateway and istiod on master node with a predefinde label
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  profile: default
+  components:
+    ingressGateways:
+    - name: istio-ingressgateway
+      k8s:
+        nodeSelector:
+          node-role: master
+        tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+          effect: "NoSchedule"
+    pilot:
+      k8s:
+        nodeSelector:
+          node-role: master
+        tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+          effect: "NoSchedule"
