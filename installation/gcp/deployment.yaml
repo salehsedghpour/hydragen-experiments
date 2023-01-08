@@ -41,6 +41,7 @@ resources:
       - IPProtocol: tcp
         ports: 
         - "30090"
+        - "30091"
         direction: INGRESS
         priority: 0
         sourceRanges: ["0.0.0.0/0"]

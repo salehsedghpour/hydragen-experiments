@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pushgateway
+  name: pushgateway
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: pushgateway
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pushgateway
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - name: pushgateway
+        image: "prom/pushgateway"
+        imagePullPolicy: "IfNotPresent"
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1000M
+          requests:
+            cpu: 100m
+            memory: 256M
+      nodeSelector:
+        node-role: master
+      tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+          effect: "NoSchedule"
