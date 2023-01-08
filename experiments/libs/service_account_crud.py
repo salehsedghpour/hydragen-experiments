@@ -47,3 +47,20 @@ def update_service_account(service_account):
     except client.ApiException as e:
         logging.warning("Service Account update of {} did not completed, look at the following for more details".format(str(service_account['metadata']['name'])))
         logging.warning(e)
+
+
+def delete_service_account(service_account):
+    """
+    This function will delete a kubernetes service_account
+    :param service_account:
+    :return:
+    """
+    try:
+        api = client.CoreV1Api()
+        api.delete_namespaced_service_account(namespace=service_account['metadata']['namespace'],
+                                               name=service_account['metadata']['name'])
+
+        logging.info("Service Account {} is successfully deleted.".format(service_account['metadata']['name']))
+    except client.ApiException as e:
+        logging.warning("Service Account deletion of {} did not completed, look at the following for more details".format(str(service_account['metadata']['name'])))
+        logging.warning(e)
