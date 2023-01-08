@@ -47,3 +47,20 @@ def update_service(service):
     except client.ApiException as e:
         logging.warning("Service update of {} did not completed, look at the following for more details".format(str(configmap['metadata']['name'])))
         logging.warning(e)
+
+
+def delete_service(service):
+    """
+    This function will delete a kubernetes service
+    :param service:
+    :return:
+    """
+    try:
+        api = client.CoreV1Api()
+        api.delete_namespaced_service(namespace=service['metadata']['namespace'],
+                                               name=service['metadata']['name'])
+
+        logging.info("Service {} is successfully deleted.".format(service['metadata']['name']))
+    except client.ApiException as e:
+        logging.warning("Service deletion of {} did not completed, look at the following for more details".format(str(service['metadata']['name'])))
+        logging.warning(e)
