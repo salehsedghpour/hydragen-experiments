@@ -60,3 +60,40 @@ def delete_circuit_breaker(service_name, name_space):
         logging.warning(
             "Circuit breaker deletion for service %s is not completed. %s" % (str(service_name), str(e)))
         return False
+
+
+def patch_circuit_breaker(service_name, name_space, max_requests):
+    """
+    :param service_name:
+    :param name_space:
+    :param max_requests:
+    :return:
+    """
+    try:
+        api_instance = client.CustomObjectsApi()
+        cb = {
+            "apiVersion": "networking.istio.io/v1alpha3",
+            "kind": "DestinationRule",
+            "metadata": {"name": service_name+"-cb"},
+            "spec": {
+                "host": service_name,
+                "trafficPolicy":{
+                    "connectionPool":{
+                        "http": {"http2MaxRequests": max_requests}
+                    }
+                }
+            }
+        }
+        api_instance.patch_namespaced_custom_object(
+            name=service_name+"-cb",
+            namespace=name_space,
+            body=cb,
+            group="networking.istio.io",
+            version="v1alpha3",
+            plural="destinationrules"
+        )
+        logging.info("Circuit breaker for service %s with value of %s is successfully updated. " % (str(service_name), str(max_requests)))
+        return True
+    except ApiException as e:
+        logging.warning("Circuit breaker update for service %s is not completed. %s" % (str(service_name), str(e)))
+        return False
