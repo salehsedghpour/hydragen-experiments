@@ -45,7 +45,7 @@ def update_service(service):
                                )
                      )
     except client.ApiException as e:
-        logging.warning("Service update of {} did not completed, look at the following for more details".format(str(configmap['metadata']['name'])))
+        logging.warning("Service update of {} did not completed, look at the following for more details".format(str(service['metadata']['name'])))
         logging.warning(e)
 
 
