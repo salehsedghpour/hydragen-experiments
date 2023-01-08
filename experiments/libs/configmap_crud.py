@@ -48,6 +48,7 @@ def update_configmap(configmap):
         logging.warning("Configmap update of {} did not completed, look at the following for more details".format(str(configmap['metadata']['name'])))
         logging.warning(e)
 
+
 def delete_configmap(configmap):
     """
     This function will delete a kubernetes configmap
