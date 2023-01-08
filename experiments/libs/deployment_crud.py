@@ -49,3 +49,20 @@ def update_deployment(deployment):
     except client.ApiException as e:
         logging.warning("Deployment update of {} did not completed, look at the following for more details".format(str(deployment['metadata']['name'])))
         logging.warning(e)
+
+
+def delete_deployment(deployment):
+    """
+    This function will delete a kubernetes deployment
+    :param deployment:
+    :return:
+    """
+    try:
+        api = client.AppsV1Api()
+        api.delete_namespaced_deployment(namespace=deployment['metadata']['namespace'],
+                                               name=deployment['metadata']['name'])
+
+        logging.info("Deployment {} is successfully deleted.".format(deployment['metadata']['name']))
+    except client.ApiException as e:
+        logging.warning("Deployment deletion of {} did not completed, look at the following for more details".format(str(deployment['metadata']['name'])))
+        logging.warning(e)
