@@ -47,3 +47,19 @@ def update_configmap(configmap):
     except client.ApiException as e:
         logging.warning("Configmap update of {} did not completed, look at the following for more details".format(str(configmap['metadata']['name'])))
         logging.warning(e)
+
+def delete_configmap(configmap):
+    """
+    This function will delete a kubernetes configmap
+    :param configmap:
+    :return:
+    """
+    try:
+        api = client.CoreV1Api()
+        api.delete_namespaced_config_map(namespace=configmap['metadata']['namespace'],
+                                               name=configmap['metadata']['name'])
+
+        logging.info("Configmap {} is successfully deleted.".format(configmap['metadata']['name']))
+    except client.ApiException as e:
+        logging.warning("Configmap deletion of {} did not completed, look at the following for more details".format(str(configmap['metadata']['name'])))
+        logging.warning(e)
