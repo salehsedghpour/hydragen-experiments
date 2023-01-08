@@ -74,3 +74,6 @@ gcloud compute ssh --zone "europe-north1-a" "hydragen-k8s-master"   --command "b
 echo "\nInstalling Prometheus ..."
 kubectl apply -f addons/namespaces/monitoring.yaml > /dev/null 2>&1
 kubectl apply -f addons/prometheus/ > /dev/null 2>&1
+
+echo "\nInstalling Push Gateway ..."
+kubectl apply -f addons/pushgateway/ > /dev/null 2>&1
